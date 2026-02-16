@@ -1,8 +1,8 @@
 package ru.animalservice.exception;
 
-public class NotFoundException extends RuntimeException {
+public class ConflictException extends RuntimeException {
 
-    public NotFoundException(String message) {
+    public ConflictException(String message) {
         super(message);
     }
 }

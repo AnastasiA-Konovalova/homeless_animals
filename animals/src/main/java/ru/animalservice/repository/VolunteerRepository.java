@@ -5,4 +5,7 @@ import ru.animalservice.model.Volunteer;
 
 public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
 
+    Volunteer findByEmail(String email);
+
+
 }

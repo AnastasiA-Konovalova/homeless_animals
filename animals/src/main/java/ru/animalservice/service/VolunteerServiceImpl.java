@@ -1,12 +1,12 @@
 package ru.animalservice.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.animalservice.dto.VolunteerDto;
 import ru.animalservice.dto.VolunteerNewDto;
 import ru.animalservice.dto.VolunteerUpdateDto;
+import ru.animalservice.exception.ConflictException;
 import ru.animalservice.exception.NotFoundException;
 import ru.animalservice.mapper.VolunteerMapper;
 import ru.animalservice.model.Volunteer;
@@ -24,26 +24,42 @@ public class VolunteerServiceImpl implements VolunteerService {
     public VolunteerDto get(Long id) {
         Volunteer volunteer = volunteerRepository.findById(id)
                 .orElseThrow(() ->
-                        new NotFoundException("Volunteer with id=" + id + " not found")
+                        new NotFoundException("Волонтер с id " + id + " не найден")
                 );
 
         return volunteerMapper.toDto(volunteer);
     }
 
     @Override
-    public ResponseEntity<VolunteerDto> createVolunteer(VolunteerNewDto newVolunteerDto) {
-        return null;
+    public VolunteerDto create(VolunteerNewDto newVolunteerDto) {
+        uniqueEmailValidate(newVolunteerDto);
+        Volunteer volunteer = VolunteerMapper.toEntity(newVolunteerDto);
+        Volunteer savedVolunteer = volunteerRepository.save(volunteer);
+        return VolunteerMapper.toDto(savedVolunteer);
     }
 
     @Override
-    public ResponseEntity<VolunteerDto> updateVolunteer(Long id, VolunteerUpdateDto updateVolunteerDto) {
-        return null;
+    public VolunteerDto update(Long id, VolunteerUpdateDto updateVolunteerDto) {
+        Volunteer volunteer = getVolunteerById(id);
+        Volunteer updateVolunteer = VolunteerMapper.toUpdate(updateVolunteerDto, volunteer);
+
+        return VolunteerMapper.toDto(updateVolunteer);
     }
 
     @Override
-    public ResponseEntity<Void> deleteVolunteer(Long id) {
-        return null;
+    public void delete(Long id) {
+        getVolunteerById(id);
+        volunteerRepository.deleteById(id);
     }
 
+    private void uniqueEmailValidate(VolunteerNewDto newVolunteerDto) {
+        Volunteer volunteer = volunteerRepository.findByEmail(newVolunteerDto.getEmail());
+        if (volunteer != null) {
+            throw new ConflictException("Волонтер с таким email " + volunteer.getEmail() + " уже существует");
+        }
+    }
 
+    private Volunteer getVolunteerById(Long id) {
+        return volunteerRepository.findById(id).orElseThrow(() -> new NotFoundException("Волонтера с таким id не найден"));
+    }
 }

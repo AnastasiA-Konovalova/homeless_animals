@@ -11,7 +11,11 @@ import java.time.LocalDateTime;
 @Getter
 public class VolunteerDto {
 
+    private Long id;
+
     private String phone;
+
+    private String email;
 
     private String name;
 

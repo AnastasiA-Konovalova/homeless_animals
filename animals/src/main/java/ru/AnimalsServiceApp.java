@@ -8,7 +8,7 @@ public class AnimalsServiceApp {
 
     @EnableJpaRepositories
     @SpringBootApplication
-    public class AnimalServiceApp {
+    public static class AnimalServiceApp {
         public static void main(String[] args) {
             SpringApplication.run(AnimalServiceApp.class, args);
         }
