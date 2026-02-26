@@ -13,8 +13,9 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -37,8 +38,18 @@ public class Volunteer {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    private VolunteerStatus volunteerStatus;
 
-    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Animals> animals;
+    @OneToMany(mappedBy = "volunteer", orphanRemoval = true)
+    private Set<Animal> animals = new HashSet<>();
+
+    public void addAnimal(Animal animal) {
+        animals.add(animal);
+        animal.setVolunteer(this);
+    }
+
+    public void removeAnimal(Animal animal) {
+        animals.remove(animal);
+        animal.setVolunteer(null);
+    }
 }

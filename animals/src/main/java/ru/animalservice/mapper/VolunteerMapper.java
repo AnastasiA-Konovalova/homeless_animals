@@ -13,7 +13,7 @@ public class VolunteerMapper {
         VolunteerDto volunteerDto = new VolunteerDto();
         volunteerDto.setName(volunteer.getName());
         volunteerDto.setPhone(volunteer.getPhone());
-        volunteerDto.setStatus(volunteer.getStatus());
+        volunteerDto.setVolunteerStatus(volunteer.getVolunteerStatus());
 
         return volunteerDto;
     }
@@ -29,7 +29,7 @@ public class VolunteerMapper {
 
     public static Volunteer toUpdate(VolunteerUpdateDto volunteerUpdateDto, Volunteer volunteer) {
         if (volunteerUpdateDto.getEmail() != null) volunteer.setEmail(volunteerUpdateDto.getEmail());
-        if (volunteerUpdateDto.getStatus() != null) volunteer.setStatus(volunteerUpdateDto.getStatus());
+        if (volunteerUpdateDto.getVolunteerStatus() != null) volunteer.setVolunteerStatus(volunteerUpdateDto.getVolunteerStatus());
         if (volunteerUpdateDto.getPhone() != null) volunteer.setPhone(volunteerUpdateDto.getPhone());
         if (volunteerUpdateDto.getName() != null) volunteer.setName(volunteerUpdateDto.getName());
         return volunteer;

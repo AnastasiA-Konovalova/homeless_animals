@@ -1,13 +1,10 @@
 package ru.animalservice.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import ru.animalservice.model.Status;
+import ru.animalservice.model.VolunteerStatus;
 
 @Getter
 @Setter
@@ -26,5 +23,5 @@ public class VolunteerNewDto {
     @Size(min = 2, max = 256)
     private String name;
 
-    private Status status;
+    private VolunteerStatus volunteerStatus;
 }

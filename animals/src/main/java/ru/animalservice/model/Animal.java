@@ -10,10 +10,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "animals")
-public class Animals {
+@Setter
+@Getter
+public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,4 +35,8 @@ public class Animals {
     @ManyToOne
     @JoinColumn(name = "volunteer_id")
     private Volunteer volunteer;
+
+    @Column(name = "count")
+    private Long animalCount;
+    //todo добавить этот столбец в таблицу
 }

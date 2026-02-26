@@ -1,11 +1,8 @@
 package ru.animalservice.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
-import ru.animalservice.model.Status;
-
-import java.time.LocalDateTime;
+import ru.animalservice.model.VolunteerStatus;
 
 @Setter
 @Getter
@@ -19,5 +16,5 @@ public class VolunteerDto {
 
     private String name;
 
-    private Status status;
+    private VolunteerStatus volunteerStatus;
 }
