@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: homeless-animals-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/animals
+      - SPRING_DATASOURCE_USERNAME=animals
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_LIQUIBASE_ENABLED=true
+      # Можно добавить профиль, если используешь
+      # - SPRING_PROFILES_ACTIVE=dev
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: homeless-animals-db
+    ports:
+      - "5434:5432"               # 5433 на хосте → не конфликтует с локальным postgres
+    environment:
+      POSTGRES_DB: animals
+      POSTGRES_USER: animals
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U animals -d animals"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

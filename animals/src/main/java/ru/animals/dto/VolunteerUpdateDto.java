@@ -1,0 +1,21 @@
+package ru.animals.dto;
+
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
+import ru.animals.model.VolunteerStatus;
+
+@Getter
+@Setter
+public class VolunteerUpdateDto {
+
+    private String email;
+
+    @Size(min = 11, max = 12)
+    private String phone;
+
+    @Size(min = 2, max = 256)
+    private String name;
+
+    private VolunteerStatus volunteerStatus;
+}

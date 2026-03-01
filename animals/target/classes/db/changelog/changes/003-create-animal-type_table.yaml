@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-animal-type
+      author: AnastasiA-Konovalova
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: |
+              CREATE TABLE animal_type (
+              id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+              type VARCHAR(255) NOT NULL UNIQUE
+              );
