@@ -71,7 +71,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal>   <!-- ←←← это самое важное! repackage делает executable JAR -->
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>

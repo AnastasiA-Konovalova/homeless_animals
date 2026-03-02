@@ -12,8 +12,6 @@ services:
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_SHOW_SQL=true
       - SPRING_LIQUIBASE_ENABLED=true
-      # Можно добавить профиль, если используешь
-      # - SPRING_PROFILES_ACTIVE=dev
     depends_on:
       db:
         condition: service_healthy
@@ -23,7 +21,7 @@ services:
     image: postgres:16-alpine
     container_name: homeless-animals-db
     ports:
-      - "5434:5432"               # 5433 на хосте → не конфликтует с локальным postgres
+      - "5434:5432"
     environment:
       POSTGRES_DB: animals
       POSTGRES_USER: animals
