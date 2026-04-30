@@ -1,0 +1,1440 @@
+{
+  "info": {
+    "_postman_id": "02f2d15c-66b2-4921-80a6-c432398042f9",
+    "name": "Animals API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39512514"
+  },
+  "item": [
+    {
+      "name": "animals.create",
+      "item": [
+        {
+          "name": "create-new-animal cat-without-type",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Validation error exists\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.errors.length).to.be.above(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"location\": \"District1\",\r\n    \"animalCount\": 5\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-new-animal cat-without-type and location",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Validation error exists\", function () {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.errors.length).to.be.above(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"animalCount\": 5\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-new-animal dog",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has animalStatus\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"animalStatus\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has address\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.address).to.eql(\"District1\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has type\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"type\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"animalTypeId\": 2,\r\n    \"location\": \"District2\",\r\n    \"animalCount\": 4\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-new-animal cat",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has animalStatus\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"animalStatus\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has address\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.address).to.eql(\"District1\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has type\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"type\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"animalTypeId\": 1,\r\n    \"location\": \"District1\",\r\n    \"animalCount\": 5\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "animals.delete",
+      "item": [
+        {
+          "name": "delete-animal",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 204\", function () {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/animals',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            animalTypeId: 1,\r",
+                  "            location: \"District1\",\r",
+                  "            animalCount: \"9\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            pm.environment.set(\"animalId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/{{animalId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "{{animalId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "animals.get",
+      "item": [
+        {
+          "name": "get-animal",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response has all required fields\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "\r",
+                  "    pm.expect(json).to.have.property(\"id\");\r",
+                  "    pm.expect(json).to.have.property(\"address\");\r",
+                  "    pm.expect(json).to.have.property(\"type\");\r",
+                  "    pm.expect(json).to.have.property(\"animalStatus\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Check animal status\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json.animalStatus).to.equal(\"NOT_UNDER_PATRONAGE\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Field types are correct\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "\r",
+                  "    pm.expect(json.id).to.be.a(\"number\");\r",
+                  "    pm.expect(json.address).to.be.a(\"string\");\r",
+                  "    pm.expect(json.type).to.be.a(\"string\");\r",
+                  "    pm.expect(json.animalStatus).to.be.a(\"string\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/animals',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            animalTypeId: 1,\r",
+                  "            location: \"District1\",\r",
+                  "            animalCount: \"9\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            pm.environment.set(\"animalId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/{{animalId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "{{animalId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-animal-wrong-id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Error message is correct\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json.message).to.eql(\"Животное с таким id не найдено\");\r",
+                  "})"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"animalTypeId\": 1,\r\n    \"location\": \"District1\",\r\n    \"animalCount\": 5\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/100",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "100"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-animal-wrong-string-id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Invalid id format\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json.message).to.include(\"Неверный формат\")\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/dc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "dc"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-animals",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content is array\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json.content).to.be.an(\"array\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Each animal has required fields\", function() {\r",
+                  "        const json = pm.response.json();\r",
+                  "\r",
+                  "        if (json.content.length > 0) {\r",
+                  "            const animal = json.content[0];\r",
+                  "        \r",
+                  "            pm.expect(animal).to.have.property(\"id\");\r",
+                  "            pm.expect(animal).to.have.property(\"type\");\r",
+                  "            pm.expect(animal).to.have.property(\"address\");\r",
+                  "            pm.expect(animal).to.have.property(\"animalStatus\");\r",
+                  "            pm.expect(animal).to.have.property(\"volunteer\");\r",
+                  "        }\r",
+                  "    });\r",
+                  "\r",
+                  "pm.test(\"Pagination values are correct\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "\r",
+                  "    pm.expect(json.number).to.eql(0);\r",
+                  "    pm.expect(json.size).to.eql(20);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Sorted by id ascending\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "\r",
+                  "    if (json.content.length > 1) {\r",
+                  "        pm.expect(json.content[0].id).to.be.below(json.content[1].id);\r",
+                  "}\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-animals-wrong",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Invalid page returns 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Error contains validation message\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json).to.have.property(\"errors\");\r",
+                  "    pm.expect(json.errors.length).to.be.above(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "packages": {},
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals?page=-1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "-1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "assign-and-release-volunteer",
+      "item": [
+        {
+          "name": "assign-volunteer-wrong-id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/animals',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            animalTypeId: 1,\r",
+                  "            location: \"District1\",\r",
+                  "            animalCount: \"9\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            pm.environment.set(\"animalId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"volunteerId\": 10000\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/{{animalId}}/assign",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "{{animalId}}",
+                "assign"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "release-volunteer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 204\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/animals',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            animalTypeId: 2,\r",
+                  "            location: \"District2\",\r",
+                  "            animalCount: \"3\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            pm.environment.set(\"animalId\", json.id);\r",
+                  "        }\r",
+                  "});\r",
+                  "\r",
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/animals' + pm.environment.get(\"animalId\") + '/assign',\r",
+                  "    method: 'POST',\r",
+                  "    headers: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    }, \r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            volunteerId: 3\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            console.log(\"Assigned to volunteer\");\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/{{animalId}}/release",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "{{animalId}}",
+                "release"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "assign-volunteer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has animalStatus\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"animalStatus\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has address\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.address).to.eql(\"District1\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has type\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"type\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/animals',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            animalTypeId: 1,\r",
+                  "            location: \"District1\",\r",
+                  "            animalCount: \"9\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            pm.environment.set(\"animalId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"volunteerId\": 3\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/animals/{{animalId}}/assign",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "animals",
+                "{{animalId}}",
+                "assign"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "create-volunteer",
+      "item": [
+        {
+          "name": "create-volunteer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has phone\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"phone\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has name\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.name).to.eql(\"Name_1\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has volunteerStatus\", function () {\r",
+                  "    const jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property(\"volunteerStatus\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"volunteer_{{$timestamp}}@email.ru\",\r\n    \"phone\": 45678901234,\r\n    \"name\": \"Name_1\",\r\n    \"volunteerStatus\": \"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/volunteers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "volunteers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-volunteer-wrong-email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(409);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Error message is correct\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json.message).to.match(/Волонтер с таким email .* уже существует/);\r",
+                  "})"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/volunteers',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            email: \"duplicate@email.com\",\r",
+                  "            phone: \"1234567890\",\r",
+                  "            name: \"Test\",\r",
+                  "            volunteerStatus: \"ACTIVE\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"duplicate@email.com\",\r\n    \"phone\": 45678901234,\r\n    \"name\": \"Name_1\",\r\n    \"volunteerStatus\": \"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/volunteers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "volunteers"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "volunteer.delete",
+      "item": [
+        {
+          "name": "delete-volunteer-wrong-id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/volunteers',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            name: \"Test User\",\r",
+                  "            email: \"test_\" + Date.now() + \"@example.com\",\r",
+                  "            phone: \"123456789099\",\r",
+                  "            volunteerStatus: \"ACTIVE\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            console.log(\"volunteerId =\", pm.environment.get(\"volunteerId\"));\r",
+                  "            pm.environment.set(\"volunteerId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/volunteers/1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "volunteers",
+                "1000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-volunteer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 204\", function () {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/volunteers',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            name: \"Test User\",\r",
+                  "            email: \"test_\" + Date.now() + \"@example.com\",\r",
+                  "            phone: \"123456789099\",\r",
+                  "            volunteerStatus: \"ACTIVE\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            console.log(\"volunteerId =\", pm.environment.get(\"volunteerId\"));\r",
+                  "            pm.environment.set(\"volunteerId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/volunteers/{{volunteerId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "volunteers",
+                "{{volunteerId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "volunteer.get",
+      "item": [
+        {
+          "name": "get-volunteer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response has all required fields\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "\r",
+                  "    pm.expect(json).to.have.property(\"id\");\r",
+                  "    pm.expect(json).to.have.property(\"phone\");\r",
+                  "    pm.expect(json).to.have.property(\"name\");\r",
+                  "    pm.expect(json).to.have.property(\"volunteerStatus\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Check volunteer status\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "    pm.expect(json.volunteerStatus).to.equal(\"ACTIVE\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Field types are correct\", function () {\r",
+                  "    const json = pm.response.json();\r",
+                  "\r",
+                  "    pm.expect(json.id).to.be.a(\"number\");\r",
+                  "    pm.expect(json.name).to.be.a(\"string\");\r",
+                  "    pm.expect(json.phone).to.be.a(\"string\");\r",
+                  "    pm.expect(json.volunteerStatus).to.be.a(\"string\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/volunteers',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            name: \"Test User\",\r",
+                  "            email: \"test_\" + Date.now() + \"@example.com\",\r",
+                  "            phone: \"123456789099\",\r",
+                  "            volunteerStatus: \"ACTIVE\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            console.log(\"volunteerId =\", pm.environment.get(\"volunteerId\"));\r",
+                  "            pm.environment.set(\"volunteerId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/volunteers/{{volunteerId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "volunteers",
+                "{{volunteerId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "volunteer.update",
+      "item": [
+        {
+          "name": "update-volunteer",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.sendRequest({\r",
+                  "    url: 'http://localhost:8080/api/v1/volunteers',\r",
+                  "    method: 'POST',\r",
+                  "    header: {\r",
+                  "        'Content-Type': 'application/json'\r",
+                  "    },\r",
+                  "    body: {\r",
+                  "        mode: 'raw',\r",
+                  "        raw: JSON.stringify({\r",
+                  "            name: \"Test User\",\r",
+                  "            email: \"test_\" + Date.now() + \"@example.com\",\r",
+                  "            phone: \"123456789099\",\r",
+                  "            volunteerStatus: \"ACTIVE\"\r",
+                  "        })\r",
+                  "    }\r",
+                  "}, function(err, res) {\r",
+                  "        if (err) {\r",
+                  "            console.log(err);\r",
+                  "        } else {\r",
+                  "            const json = res.json();\r",
+                  "\r",
+                  "            console.log(\"Saved ID:\", json.id);\r",
+                  "            console.log(\"volunteerId =\", pm.environment.get(\"volunteerId\"));\r",
+                  "            pm.environment.set(\"volunteerId\", json.id);\r",
+                  "        }\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"phone\": 123456789012,\r\n    \"name\": \"Name_Update\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/volunteers/{{volunteerId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "volunteers",
+                "{{volunteerId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-insert-animal-types
+      author: AnastasiA-Konovalova
+      changes:
+        - insert:
+            tableName: animal_type
+            columns:
+              - column:
+                  name: type
+                  value: DOG
+              - column:
+                  name: type
+                  value: CAT
